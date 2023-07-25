@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+                http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+                http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+    <context:component-scan base-package="ru.khamedov.ildar.store"/>
+    <tx:annotation-driven/>
+    <task:annotation-driven/>
+
+    <!-- REST -->
+<!--    <jaxrs:server id="restService" address="/">-->
+<!--        <jaxrs:serviceBeans>-->
+<!--            <bean class="ru.khamedov.ildar.store.service.RestService"/>-->
+<!--        </jaxrs:serviceBeans>-->
+<!--        <jaxrs:providers>-->
+<!--            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>-->
+<!--        </jaxrs:providers>-->
+<!--    </jaxrs:server>-->
+
+    <bean id="transactionFilter" class="ru.khamedov.ildar.store.security.TransactionFilter"/>
+
+    <bean class="ru.khamedov.ildar.store.web.WicketApplication"/>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:datasource.properties</value>
+                <value>classpath:hibernate.properties</value>
+                <value>classpath:profile.properties</value>
+                <value>classpath:email.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Resources -->
+    <import resource="profileContext.xml"/>
+    <import resource="hibernateContext.xml"/>
+    <import resource="securityContext.xml"/>
+
+
+
+    <bean id="emailService" class="ru.simplex_software.emailservice.EmailService">
+        <property name="mailSender" ref="mailSender" />
+        <property name="login"  value="${emailservice.email.login}" />
+        <property name="senderEmailAddress"  value="${emailservice.email.senderEmailAddress}" />
+        <property name="techSupport"  value="${emailservice.email.techSupport}" />
+        <property name="registrationText"  value="Здравствуйте!&#10; Для завершения регистрации пройдите по ссылке:" />
+    </bean>
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${emailservice.email.host}" />
+        <property name="port" value="465" />
+        <property name="username" value="${emailservice.email.login}" />
+        <property name="password" value="${emailservice.email.password}" />
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.socketFactory.fallback">true</prop>
+                <prop key="mail.smtp.ssl.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
