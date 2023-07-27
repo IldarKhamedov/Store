@@ -10,22 +10,19 @@ import ru.khamedov.ildar.store.service.ProductService;
 /**
  * Главная страница.
  */
-public class IndexPage extends WebPage {
+public class IndexPage extends SuperPage {
 
     @SpringBean
     private ProductService productService;
 
     public IndexPage() {
 
-        Label testLabel = new Label("label", "Test label.");
+        Label testLabel = new Label("label");
         add(testLabel);
 
         Link<Void> reloadLink = new Link<Void>("href") {
             @Override
             public void onClick() {
-
-                productService.createProduct();
-//                setResponsePage(getPage());
             }
         };
         add(reloadLink);
