@@ -111,7 +111,7 @@
 
     <error-page>
         <error-code>403</error-code>
-        <location>/signIn.html?error=true</location>
+        <location>/Error403.html</location>
     </error-page>
 
 </web-app>

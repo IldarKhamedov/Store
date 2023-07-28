@@ -30,6 +30,5 @@ public class SelectPanel extends Panel {
         moderatorLabel.setVisible(authenticationService.getLogginedUser() instanceof Moderator);
         Label clientLabel=new Label("client","Профиль");
         add(clientLabel);
-        clientLabel.setVisible(authenticationService.getLogginedUser() instanceof Client);
     }
 }
