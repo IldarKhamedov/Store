@@ -46,6 +46,9 @@ public class WicketApplication extends WebApplication implements ApplicationCont
 
 
 
+        mount(new MountedMapper("signIn.html", SignInPage.class));
+        mount(new MountedMapper("client.html", ClientPage.class));
+
         getComponentInstantiationListeners().add(new SpringComponentInjector(this, applicationContext, true));
         getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
         getMarkupSettings().setDefaultMarkupEncoding("UTF-8");

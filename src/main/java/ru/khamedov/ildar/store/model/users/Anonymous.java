@@ -11,6 +11,14 @@ public class Anonymous implements PersistentEntity<String> {
     @Id
     private String login;
 
+
+    public Anonymous(String login) {
+        this.login = login;
+    }
+
+    public Anonymous() {
+    }
+
     @Override
     public String getPrimaryKey() {
         return login;
@@ -19,5 +27,13 @@ public class Anonymous implements PersistentEntity<String> {
     @Transient
     public boolean isAnonymous() {
         return true;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

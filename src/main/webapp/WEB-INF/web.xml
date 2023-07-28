@@ -18,10 +18,6 @@
     <filter>
         <filter-name>transactionFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <init-param>
-            <param-name>targetBeanName</param-name>
-            <param-value>transactionFilter</param-value>
-        </init-param>
     </filter>
 
     <filter-mapping>
@@ -29,13 +25,13 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- Spring security -->
     <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-name>anonymousFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
+
     <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-name>anonymousFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
@@ -112,4 +108,10 @@
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
     </welcome-file-list>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/signIn.html?error=true</location>
+    </error-page>
+
 </web-app>

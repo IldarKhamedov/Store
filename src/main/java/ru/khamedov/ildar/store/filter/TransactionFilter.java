@@ -1,4 +1,4 @@
-package ru.khamedov.ildar.store.security;
+package ru.khamedov.ildar.store.filter;
 
 import org.springframework.transaction.annotation.Transactional;
 

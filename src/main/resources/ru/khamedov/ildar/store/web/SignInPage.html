@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ru" xmlns:wicket="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Вход</title>
+</head>
+
+<body>
+			<form action="signIn.html" method="post">
+				<table>
+					<tr>
+						<td><label for="login" id="login-label">Логин</label></td>
+						<td><input type="text" name="user" id="login"></td>
+					</tr>
+					<tr>
+						<td><label for="password" id="password-label">Пароль</label></td>
+						<td><input type="password" name="password" id="password"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Войти"></td>
+						<td><input type="reset" name="Очистить"> </td>
+					</tr>
+				</table>
+				<div wicket:id="error"/>
+			</form>
+</body>
+</html>

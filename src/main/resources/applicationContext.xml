@@ -26,7 +26,8 @@
 <!--        </jaxrs:providers>-->
 <!--    </jaxrs:server>-->
 
-    <bean id="transactionFilter" class="ru.khamedov.ildar.store.security.TransactionFilter"/>
+    <bean id="transactionFilter" class="ru.khamedov.ildar.store.filter.TransactionFilter"/>
+    <bean id="anonymousFilter" class="ru.khamedov.ildar.store.filter.AnonymousFilter"/>
 
     <bean class="ru.khamedov.ildar.store.web.WicketApplication"/>
 
@@ -44,9 +45,12 @@
     <!-- Resources -->
     <import resource="profileContext.xml"/>
     <import resource="hibernateContext.xml"/>
-    <import resource="securityContext.xml"/>
 
     <bean name="productService" class="ru.khamedov.ildar.store.service.ProductService"/>
+    <bean name="authenticationService" class="ru.khamedov.ildar.store.service.AuthenticationService"/>
+    <bean name="anonymousService" class="ru.khamedov.ildar.store.service.AnonymousService"/>
+
+
 
 
 
@@ -73,6 +77,13 @@
                 <prop key="mail.smtp.ssl.enable">true</prop>
             </props>
         </property>
+    </bean>
+
+    <bean name="userDetailsServiceImpl" class="ru.khamedov.ildar.store.security.UserDetailsServiceImpl"/>
+    <bean name="noOpPasswordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder"/>
+    <bean name="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider" >
+        <property name="userDetailsService" ref="userDetailsServiceImpl"/>
+        <property name="passwordEncoder" ref="noOpPasswordEncoder"/>
     </bean>
 
 </beans>
