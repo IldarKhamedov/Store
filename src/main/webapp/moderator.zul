@@ -3,8 +3,50 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul  http://www.zkoss.org/2005/zul/zul.xsd">
     <window title="Список работников"
-            width="100%" height="100%" sizable="true">
-        <label value="moderator"/>
-        <a href="/signOut" label="Выйти"/>
+            width="100%" height="100%" sizable="true"
+            viewModel="@id('vm') @init('ru.khamedov.ildar.store.web.viewmodel.ModeratorVM')">
+        <hbox>
+            <checkbox label="продавец" checked="@bind(vm.seller)" onCheck="@command('findStaffByFilter')"/>
+            <checkbox label="кладовщик" checked="@bind(vm.storekeeper)" onCheck="@command('findStaffByFilter')"/>
+            <checkbox label="заблокирован" checked="@bind(vm.blocked)" onCheck="@command('findStaffByFilter')"/>
+            <button label="добавить сотрудника" onClick="@command('editStaff',staff=null)"/>
+
+            <a href="/signOut" label="Выйти"/>
+        </hbox>
+        <borderlayout>
+            <center autoscroll="true">
+                <listbox model="@load(vm.staffList)">
+                    <listhead>
+                        <listheader label="Имя"/>
+                        <listheader label="Фамилия"/>
+                        <listheader label="Должность"/>
+                        <listheader label="Email"/>
+                        <listheader label="Телефон"/>
+                        <listheader label="Дата трудоустройства"/>
+                        <listheader width="25%" label="Править"/>
+                    </listhead>
+
+                    <template name="model" var="staff" >
+                        <listitem>
+                            <listcell label="@load(staff.firstName)"/>
+                            <listcell label="@load(staff.lastName)"/>
+                            <listcell label="@load(vm.getPosition(staff))"/>
+                            <listcell label="@load(staff.email)"/>
+                            <listcell label="@load(staff.phoneNumber)"/>
+                            <listcell label="@load(staff.created)"/>
+                            <listcell>
+                                <hbox>
+                                    <checkbox label="заблокировать" checked="@bind(staff.blocked)" onCheck="@command('blockedUser',staff=staff)"/>
+                                    <button label="удалить" onClick="@command('deletedUser',staff=staff)"/>
+                                    <button label="редактировать"  onClick="@command('editStaff',staff=staff)"/>
+                                </hbox>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+            </center>
+        </borderlayout>
+
+
     </window>
 </zk>

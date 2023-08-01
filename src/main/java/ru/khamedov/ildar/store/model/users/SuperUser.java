@@ -24,6 +24,21 @@ public abstract class SuperUser extends Anonymous {
     @Size(min=6, max = 11)
     private String phoneNumber;
 
+    private boolean blocked;
+
+    public SuperUser(String login, String firstName, String lastName, String password, String email, String phoneNumber) {
+        super(login);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public SuperUser() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -73,5 +88,13 @@ public abstract class SuperUser extends Anonymous {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 }

@@ -35,14 +35,14 @@ CREATE TABLE "owner" (
 	login varchar(255) NOT NULL,
 	CONSTRAINT owner_pkey PRIMARY KEY (login)
 );
-ALTER TABLE "owner" ADD CONSTRAINT fkc6a32e0l8t5nyoru05q2foqdt FOREIGN KEY (login) REFERENCES staff(login);
+ALTER TABLE "owner" ADD CONSTRAINT fkkyo7b74vmb80p0o175r1m6kto FOREIGN KEY (login) REFERENCES superuser(login);
 
 
-CREATE TABLE saler (
+CREATE TABLE seller (
 	login varchar(255) NOT NULL,
-	CONSTRAINT saler_pkey PRIMARY KEY (login)
+	CONSTRAINT seller_pkey PRIMARY KEY (login)
 );
-ALTER TABLE saler ADD CONSTRAINT fkimy6s1wordijqj8c42id4sj8m FOREIGN KEY (login) REFERENCES staff(login);
+ALTER TABLE seller ADD CONSTRAINT fkimy6s1wordijqj8c42id4sj8m FOREIGN KEY (login) REFERENCES staff(login);
 
 CREATE TABLE storekeeper (
 	login varchar(255) NOT NULL,

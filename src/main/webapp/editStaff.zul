@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul  http://www.zkoss.org/2005/zul/zul.xsd">
+
+    <window viewModel="@id('vm') @init('ru.khamedov.ildar.store.web.viewmodel.EditStaffVM')"
+            title="Сотрудник" mode="modal" closable="true"
+            height="min" hflex="1"
+            form="@id('fx') @load(vm.staff) @save(vm.staff, before='saveStaff')"
+            validationMessages="@id('vmsgs')">
+       <listbox>
+           <listhead></listhead>
+           <listitem>
+               <listcell>
+                   <label value="Имя"/>
+               </listcell>
+               <listcell>
+                   <textbox value="@bind(fx.firstName) @validator('beanValidator')" constraint="no empty" />
+               </listcell>
+           </listitem>
+           <listitem>
+               <listcell>
+                   <label value="Фамилия"/>
+               </listcell>
+               <listcell>
+                   <textbox value="@bind(fx.lastName) @validator('beanValidator')" constraint="no empty" />
+               </listcell>
+           </listitem>
+           <listitem>
+               <listcell>
+                   <label value="Должность"/>
+               </listcell>
+               <listcell>
+                   <combobox model="@load(vm.positionList)" disabled="@load(vm.editStaff)"
+                   selectedItem="@bind(vm.position)" readonly="true"/>
+               </listcell>
+           </listitem>
+           <listitem>
+               <listcell>
+                   <label value="Email"/>
+
+               </listcell>
+               <listcell>
+                   <textbox id="emailTb" value="@bind(fx.email) @validator(vm.emailValidator)" />
+                   <label style="color:red" value="@load(vmsgs[emailTb])"/>
+               </listcell>
+           </listitem>
+           <listitem>
+               <listcell>
+                   <label value="Телефон"/>
+               </listcell>
+               <listcell>
+                   <textbox value="@bind(fx.phoneNumber) @validator('beanValidator')" constraint="no empty" />
+               </listcell>
+           </listitem>
+       </listbox>
+        <hbox>
+            <button label="сохранить" onClick="@command('saveStaff')"/>
+            <button label="отменить" onClick="@command('cancelStaff')"/>
+        </hbox>
+    </window>
+
+</zk>

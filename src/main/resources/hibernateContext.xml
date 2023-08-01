@@ -8,7 +8,8 @@
                 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
                 http://autodao.sourceforge.net/schemas/autodao-0.12 http://autodao.sourceforge.net/schemas/autodao-0.12.xsd">
 
-    <dao:hibernateScan base-package="ru.khamedov.ildar.store.dao" />
+    <dao:hibernateScan base-package="ru.khamedov.ildar.store.dao"/>
+    <dao:hibernate interface="ru.khamedov.ildar.store.dao.StaffDAO" entity="ru.khamedov.ildar.store.model.users.Staff" id="staffDAO"/>
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
 

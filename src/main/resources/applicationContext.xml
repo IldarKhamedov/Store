@@ -43,13 +43,14 @@
     </bean>
 
     <!-- Resources -->
-    <import resource="profileContext.xml"/>
     <import resource="hibernateContext.xml"/>
 
     <bean name="productService" class="ru.khamedov.ildar.store.service.ProductService"/>
     <bean name="authenticationService" class="ru.khamedov.ildar.store.service.AuthenticationService"/>
     <bean name="anonymousService" class="ru.khamedov.ildar.store.service.AnonymousService"/>
+    <bean name="staffService" class="ru.khamedov.ildar.store.service.StaffService"/>
 
+    <bean name="dataLoader" class="ru.khamedov.ildar.store.DataLoader"/>
 
 
 

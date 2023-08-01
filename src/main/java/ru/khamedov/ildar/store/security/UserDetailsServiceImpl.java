@@ -41,12 +41,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (superUser instanceof Owner){
             authorities.add(new SimpleGrantedAuthority("ROLE_OWNER"));
         }
-        if (superUser instanceof Saler){
-            authorities.add(new SimpleGrantedAuthority("ROLE_SALER"));
+        if (superUser instanceof Seller){
+            authorities.add(new SimpleGrantedAuthority("ROLE_SELLER"));
         }
         if (superUser instanceof Storekeeper){
             authorities.add(new SimpleGrantedAuthority("ROLE_STOREKEEPER"));
         }
-        return new User(login, superUser.getPassword(),true,true, true, true, authorities);
+        return new User(login, superUser.getPassword(),!superUser.isBlocked(),true, true, true, authorities);
     }
 }

@@ -1,0 +1,1 @@
+ALTER TABLE anonymous ADD COLUMN created timestamp NULL DEFAULT '2023-01-01 00:00:00.000';
