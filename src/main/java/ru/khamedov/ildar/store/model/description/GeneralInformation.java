@@ -3,10 +3,7 @@ package ru.khamedov.ildar.store.model.description;
 import org.hibernate.annotations.Type;
 import ru.khamedov.ildar.store.model.AutoLongIdPersistentEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +18,39 @@ public class GeneralInformation extends AutoLongIdPersistentEntity {
 
     private boolean deleted;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "generalInformation_id")
     private List<ImageFile> imageFileList=new ArrayList<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public List<ImageFile> getImageFileList() {
+        return imageFileList;
+    }
+
+    public void setImageFileList(List<ImageFile> imageFileList) {
+        this.imageFileList = imageFileList;
+    }
 }

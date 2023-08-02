@@ -8,4 +8,12 @@ public class SubCategoryOfProduct extends AbstractCategoryOfProduct{
 
     @ManyToOne
     private CategoryOfProduct categoryOfProduct;
+
+    public CategoryOfProduct getCategoryOfProduct() {
+        return categoryOfProduct;
+    }
+
+    public void setCategoryOfProduct(CategoryOfProduct categoryOfProduct) {
+        this.categoryOfProduct = categoryOfProduct;
+    }
 }

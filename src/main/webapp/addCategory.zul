@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul  http://www.zkoss.org/2005/zul/zul.xsd">
+
+    <window viewModel="@id('vm') @init('ru.khamedov.ildar.store.web.viewmodel.AddCategoryVM')"
+            title="Категория" mode="modal" closable="true"
+            height="min" hflex="1">
+       <listbox>
+           <listhead></listhead>
+           <listitem>
+               <listcell>
+                   <label value="Название"/>
+               </listcell>
+               <listcell>
+                   <textbox value="@bind(vm.abstractCategoryOfProduct.generalInformation.name)" />
+               </listcell>
+           </listitem>
+           <listitem>
+               <listcell>
+                   <label value="Описание"/>
+               </listcell>
+               <listcell>
+                   <textbox value="@bind(vm.abstractCategoryOfProduct.generalInformation.description)" />
+               </listcell>
+           </listitem>
+       </listbox>
+        <hbox>
+            <button label="добавить картинку"  upload="true,maxsize=-1"
+                    onUpload="@command('addPicture',media=event.media)"/>
+            <button label="сохранить" onClick="@command('saveCategory')"/>
+            <button label="отменить" onClick="@command('cancelCategory')"/>
+        </hbox>
+    </window>
+
+</zk>

@@ -10,10 +10,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"groupCode_id", "individualCode_id"})})
-public abstract class Product extends AutoLongIdPersistentEntity {
+public  class Product extends AutoLongIdPersistentEntity {
 
-    @OneToOne
-    @Basic(optional = false)
+    @OneToOne(optional = false)
     private GeneralInformation generalInformation;
 
     private Double cost;

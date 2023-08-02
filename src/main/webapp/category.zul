@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul  http://www.zkoss.org/2005/zul/zul.xsd">
+    <window title="Список товаров"
+            width="100%" height="100%" sizable="true"
+            viewModel="@id('vm') @init('ru.khamedov.ildar.store.web.viewmodel.CategoryVM')">
+        <hbox>
+            <button label="добавить категорию товара" onClick="@command('addCategory')"/>
+            <a href="/signOut" label="Выйти"/>
+        </hbox>
+        <borderlayout>
+            <center autoscroll="true">
+                <listbox model="@load(vm.categoryList)">
+                    <listhead>
+                        <listheader label="Название"/>
+                        <listheader label="Описание"/>
+                        <listheader label="Изображение"/>
+                    </listhead>
+
+                    <template name="model" var="category" >
+                        <listitem>
+                            <listcell label="@load(category.generalInformation.name)"/>
+                            <listcell label="@load(category.generalInformation.description)"/>
+                            <listcell>
+                                <image src="@load(vm.getImage(category))" height="20px"/>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+            </center>
+        </borderlayout>
+    </window>
+</zk>

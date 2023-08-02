@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul  http://www.zkoss.org/2005/zul/zul.xsd">
+    <window title="Список товаров"
+            width="100%" height="100%" sizable="true">
+        <tabbox  orient="top" vflex="1">
+            <tabs id="tabs" width="200px">
+                <tab  label="Категории" sclass="left"/>
+                <tab  label="Подкатегории"/>
+                <tab  label="Товары"/>
+            </tabs>
+            <tabpanels>
+                <tabpanel>
+                    <include src="/category.zul"/>
+                </tabpanel>
+                <tabpanel>
+                    <include src="/category.zul"/>
+                </tabpanel>
+                <tabpanel>
+                    <include src="/category.zul/"/>
+                </tabpanel>
+            </tabpanels>
+        </tabbox>
+    </window>
+</zk>

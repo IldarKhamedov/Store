@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khamedov.ildar.store.model.users.Client;
 import ru.khamedov.ildar.store.model.users.Moderator;
+import ru.khamedov.ildar.store.model.users.Seller;
 import ru.khamedov.ildar.store.service.AuthenticationService;
 
 
@@ -28,6 +29,9 @@ public class SelectPanel extends Panel {
         Label moderatorLabel=new Label("moderator","Модератор");
         add(moderatorLabel);
         moderatorLabel.setVisible(authenticationService.getLogginedUser() instanceof Moderator);
+        Label sellerLabel=new Label("seller","Продавец");
+        add(sellerLabel);
+        sellerLabel.setVisible(authenticationService.getLogginedUser() instanceof Seller);
         Label clientLabel=new Label("client","Профиль");
         add(clientLabel);
     }

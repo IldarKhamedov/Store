@@ -12,4 +12,12 @@ public class ImageContent  extends AutoLongIdPersistentEntity {
     @Type(type="org.hibernate.type.BinaryType")
     @Lob
     private byte[] content = new byte[0];
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
 }

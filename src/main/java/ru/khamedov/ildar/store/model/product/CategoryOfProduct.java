@@ -10,4 +10,12 @@ public class CategoryOfProduct extends AbstractCategoryOfProduct{
 
     @OneToMany(mappedBy = "categoryOfProduct")
     private List<SubCategoryOfProduct> subCategoryOfProductList=new ArrayList<>();
+
+    public List<SubCategoryOfProduct> getSubCategoryOfProductList() {
+        return subCategoryOfProductList;
+    }
+
+    public void setSubCategoryOfProductList(List<SubCategoryOfProduct> subCategoryOfProductList) {
+        this.subCategoryOfProductList = subCategoryOfProductList;
+    }
 }

@@ -87,6 +87,15 @@
         <url-pattern>/zkau/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>imageServlet</servlet-name>
+        <servlet-class>org.springframework.web.context.support.HttpRequestHandlerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>imageServlet</servlet-name>
+        <url-pattern>/getImage/*</url-pattern>
+    </servlet-mapping>
+
 <!--    <servlet>-->
 <!--        <servlet-name>CXFServlet</servlet-name>-->
 <!--        <display-name>CXF Servlet</display-name>-->
@@ -112,6 +121,10 @@
     <error-page>
         <error-code>403</error-code>
         <location>/Error403.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/Error404.html</location>
     </error-page>
 
 </web-app>

@@ -10,6 +10,8 @@
 
     <dao:hibernateScan base-package="ru.khamedov.ildar.store.dao"/>
     <dao:hibernate interface="ru.khamedov.ildar.store.dao.StaffDAO" entity="ru.khamedov.ildar.store.model.users.Staff" id="staffDAO"/>
+    <dao:hibernate interface="ru.khamedov.ildar.store.dao.CategoryOfProductDAO" entity="ru.khamedov.ildar.store.model.product.CategoryOfProduct" id="categoryOfProductDAO"/>
+    <dao:hibernate interface="ru.khamedov.ildar.store.dao.AbstractCategoryOfProductDAO" entity="ru.khamedov.ildar.store.model.product.AbstractCategoryOfProduct" id="abstractCategoryOfProductDAO"/>
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
 
