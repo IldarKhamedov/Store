@@ -17,14 +17,14 @@
     <task:annotation-driven/>
 
     <!-- REST -->
-<!--    <jaxrs:server id="restService" address="/">-->
-<!--        <jaxrs:serviceBeans>-->
-<!--            <bean class="ru.khamedov.ildar.store.service.RestService"/>-->
-<!--        </jaxrs:serviceBeans>-->
-<!--        <jaxrs:providers>-->
-<!--            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>-->
-<!--        </jaxrs:providers>-->
-<!--    </jaxrs:server>-->
+    <jaxrs:server id="restService" address="/">
+        <jaxrs:serviceBeans>
+            <bean class="ru.khamedov.ildar.store.service.RestService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
 
     <bean id="transactionFilter" class="ru.khamedov.ildar.store.filter.TransactionFilter"/>
     <bean id="anonymousFilter" class="ru.khamedov.ildar.store.filter.AnonymousFilter"/>
@@ -49,6 +49,7 @@
     <bean name="authenticationService" class="ru.khamedov.ildar.store.service.AuthenticationService"/>
     <bean name="anonymousService" class="ru.khamedov.ildar.store.service.AnonymousService"/>
     <bean name="staffService" class="ru.khamedov.ildar.store.service.StaffService"/>
+    <bean name="salesService" class="ru.khamedov.ildar.store.service.SalesService"/>
 
     <bean name="imageServlet" class="ru.khamedov.ildar.store.web.servlets.ImageServlet"/>
 

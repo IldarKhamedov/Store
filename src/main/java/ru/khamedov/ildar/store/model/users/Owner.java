@@ -8,4 +8,7 @@ public class Owner extends SuperUser{
     public Owner(String login, String firstName, String lastName, String password, String email, String phoneNumber) {
         super(login, firstName, lastName, password, email, phoneNumber);
     }
+
+    public Owner() {
+    }
 }

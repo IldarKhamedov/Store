@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: store server api
+  description: Для выполнения всех запросов требуется базовая аутентификация
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+tags:
+  - name: Зарплата
+    description: Получение зп сотрудника
+  - name: Продажи
+    description: Получение продаж сотрудника
+paths:
+  "/owner/staff/salary/{login}":
+    get:
+      tags:
+        - Зарплата
+      summary: Получение зп сотрудника
+      operationId: getSalary
+      parameters:
+        - in: path
+          name: login
+          required: true
+          description: Login сотрудника
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  salary:
+                    type: number
+        "404":
+          description: Staff Not found
+  "/owner/staff/sales/{login}/{period}":
+    get:
+      tags:
+        - Продажи
+      summary: Получение списка продаж
+      operationId: getSalesByPeriod
+      parameters:
+        - in: path
+          name: login
+          required: true
+          description: Login сотрудника
+          schema:
+            type: string
+        - in: path
+          name: period
+          required: true
+          description: Период отчета по продажам
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SellerDTO"
+components:
+  schemas:
+    SellerDTO:
+      description: Продавец.
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfHiring:
+          type: string
+          format: date-time
+        salary:
+          type: number
+        percentage:
+          type: number
+        sales:
+          type: array
+          items:
+            $ref: "#/components/schemas/SalesDTO"
+        total:
+          type: number
+    SalesDTO:
+      description: Продажи.
+      type: object
+      properties:
+        product:
+          type: string
+        money:
+          type: number
+

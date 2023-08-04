@@ -18,9 +18,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
         http.headers().frameOptions().sameOrigin();
+        http.httpBasic();
 
         http.authorizeRequests().antMatchers("/signIn.html").permitAll()
-                .antMatchers("/client.html").hasRole("CLIENT");
+                .antMatchers("/client.html").hasRole("CLIENT")
+                .antMatchers("/api/owner/**").hasRole("OWNER")
+                .antMatchers("/api/moderator/**").hasRole("MODERATOR");
 
         final FormLoginConfigurer<HttpSecurity> formLogin = http.formLogin();
         formLogin.loginPage("/signIn.html").defaultSuccessUrl("/");

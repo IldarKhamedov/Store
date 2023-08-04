@@ -22,33 +22,33 @@
 
     <dependencies>
 
-        <!-- Для генерации API из .yaml-->
-<!--        <dependency>-->
-<!--            <groupId>javax.ws.rs</groupId>-->
-<!--            <artifactId>javax.ws.rs-api</artifactId>-->
-<!--            <version>2.1.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger</groupId>-->
-<!--            <artifactId>swagger-annotations</artifactId>-->
-<!--            <version>1.6.2</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger</groupId>-->
-<!--            <artifactId>swagger-jaxrs</artifactId>-->
-<!--            <version>1.6.2</version>-->
-<!--        </dependency>-->
+<!--         Для генерации API из .yaml-->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jaxrs</artifactId>
+            <version>1.6.2</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
             <version>3.4.2</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.codehaus.jackson</groupId>-->
-<!--            <artifactId>jackson-jaxrs</artifactId>-->
-<!--            <version>1.9.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>1.9.0</version>
+        </dependency>
 
 
         <!-- БД для тестов -->
@@ -250,12 +250,12 @@
 
 
         <!-- JUnit -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <version>5.8.2</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!-- Hibernate -->
         <dependency>
@@ -295,11 +295,15 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.12.Final</version>
         </dependency>
-
+        <dependency>
+            <groupId>net.sf.wicket-autodao</groupId>
+            <artifactId>wicket-autodao</artifactId>
+            <version>0.16</version>
+        </dependency>
         <dependency>
             <groupId>net.sf.autodao</groupId>
             <artifactId>autodao</artifactId>
-            <version>0.12.2</version>
+            <version>1.0.0</version>
         </dependency>
 
 
@@ -565,32 +569,32 @@
             </plugin>
 
 <!--            For generation API from .yaml-->
-<!--            <plugin>-->
-<!--                <groupId>org.openapitools</groupId>-->
-<!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
-<!--                <version>5.0.1</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <generatorName>jaxrs-cxf</generatorName>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>-->
-<!--                            <output>${project.basedir}/target/</output>-->
-<!--                            <generateApis>true</generateApis>-->
-<!--                            <apiPackage>ru.khamedov.ildar.store.api</apiPackage>-->
-<!--                            <addCompileSourceRoot>false</addCompileSourceRoot>-->
-<!--                            <modelPackage>ru.khamedov.ildar.store.dto</modelPackage>-->
-<!--                            <generateApiTests>false</generateApiTests>-->
-<!--                            <generateModelTests>false</generateModelTests>-->
-<!--                            <generateApiDocumentation>false</generateApiDocumentation>-->
-<!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>5.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generatorName>jaxrs-cxf</generatorName>
+                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
+                            <output>${project.basedir}/target/</output>
+                            <generateApis>true</generateApis>
+                            <apiPackage>ru.khamedov.ildar.store.api</apiPackage>
+                            <addCompileSourceRoot>false</addCompileSourceRoot>
+                            <modelPackage>ru.khamedov.ildar.store.dto</modelPackage>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

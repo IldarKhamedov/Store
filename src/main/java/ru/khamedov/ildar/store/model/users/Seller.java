@@ -14,4 +14,12 @@ public class Seller extends Staff{
     public Seller() {
         super();
     }
+
+    public double getPercentageOfSales() {
+        return percentageOfSales;
+    }
+
+    public void setPercentageOfSales(double percentageOfSales) {
+        this.percentageOfSales = percentageOfSales;
+    }
 }
